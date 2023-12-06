@@ -8,10 +8,13 @@ Title: Newton-Cotes Quadrature
 
 ## Table of Contents
 
-- [Overview](#Overview)
-- [Background](#Background)
+- [Overview](#overview)
+- [Background](#background)
+- [References](#references)
 
 ## Overview
+
+The Newton-Cotes Quadrature or Newton-Cotes Formulae are a type of a broader class of algorithms known as numerical quadrature, which aim to approximate the results of definite integrals [1]. These algorithms are very important for functions $f(x)$ that do not have an antiderivative $F(x)$ which would prevent us from applying the Fundamental Theorem of Calculus $\int_a^b f(x)dx = F(b) - F(a)$.
 
 ## Background
 

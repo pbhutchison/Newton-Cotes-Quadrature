@@ -3,9 +3,13 @@ Name: Paul Hutchison
 Topic: 28
 Title: Newton-Cotes Quadrature
 ---
+
 # Newton-Cotes Quadrature
 
 ## Table of Contents
+
+- [Overview](#Overview)
+- [Background](#Background)
 
 ## Overview
 
@@ -13,7 +17,9 @@ Title: Newton-Cotes Quadrature
 
 ## Implementations of Newton-Cotes Quadrature
 
-## Shortcomings of Method and Other Methods
+## Shortcomings of Newton-Cotes and Alternate Methods
+
+## Handling Edge Cases
 
 ## Extending to Composite Quadrature
 

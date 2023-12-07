@@ -11,7 +11,6 @@ Title: Newton-Cotes Quadrature
 - [Overview](#overview)
 - [Background](#background)
 - [Implementation of Newton-Cotes Quadrature](#implementations-of-newton-cotes-quadrature)
-- [Shortcomings of Newton-Cotes and Better Methods](#shortcomings-of-newton-cotes-and-better-methods)
 - [Extending to Composite Quadrature](#extending-to-composite-quadrature)
 - [References](#references)
 
@@ -32,7 +31,7 @@ Consider the Reimann Sum that defines a definite integral. The Reimann Sum only 
 $$\int_a^b f(x)dx \approx R(f) = \sum_{i=1}^n (x_{i+1} - x_i) f(x_i)$$
 when considering the left-side sum. By definition of quadrature rules, the Reimann Sum is a form of numerical quadrature. Visually, the Left Reimann Sum of some function $f(x)$ on six quadrature points is [4]:
 
-![Figure 1.](LHRS.jpg)
+![](LHRS.jpg)
 
 ### Deriving Quadrature Rules
 
@@ -49,11 +48,13 @@ $$\vdots$$
 $$x_1^{n-1}w_1 + \cdots + x_n^{n-1}w_n = \int_a^b x^{n-1}dx$$
 Solving this system of linear equations returns a set of quadrature weights, leaving only the trivial computation of the quadrature rule summation.
 
+These methods of computing different quadrature rules are sufficient for understanding how the Newton-Cotes quadrature rules are derived and when they perform the best.
+
 ## Implementations of Newton-Cotes Quadrature
 
 ### Defining Features
 
-The Newton-Cotes quadrature rule differentiates itself from most other quadrature rules by evenly spacing each abscissa on the integration interval $[a,b]$ [source tbd]. The quadrature weights can then be found by interpolating $f$ on the $n$ nodes or applying the method of undetermined coefficients. As such, the only consideration for different forms of the Newton-Cotes quadrature rule is the number of nodes and whether the quadrature rule is open or closed. There are several common Newton-Cotes quadrature rules, and are also the most straightforward cases. Those cases are the midpoint, trapezoid, and Simpson's rules. 
+The Newton-Cotes quadrature rule differentiates itself from most other quadrature rules by evenly spacing each abscissa on the integration interval $[a,b]$ [1]. The quadrature weights can then be found by interpolating $f$ on the $n$ nodes or applying the method of undetermined coefficients. As such, the only consideration for different forms of the Newton-Cotes quadrature rule is the number of nodes and whether the quadrature rule is open or closed. There are several common Newton-Cotes quadrature rules, and are also the most straightforward cases. Those cases are the midpoint, trapezoid, and Simpson's rules. Other rules exist and have their uses, but they also have weaknesses that make them appear useless. 
 
 ### Midpoint Rule
 
@@ -71,7 +72,9 @@ Similar to the midpoint rule, this result is derivable from the method of undete
 
 Simpson's rule is a three-point closed rule where the points are the beginning, midpoint, and end of the integration interval. A closed-form expression for the result of the quadrature is [1]:
 $$S(f) = \frac{b-a}{6}(f(a) + 4f(\frac{a+b}{2}) + f(b))$$
-Like the other rules, Simpson's rule is derivable by undetermined coefficients. 
+Like the other rules, Simpson's rule is derivable by undetermined coefficients. Simpson's rule finds the interpolated polynomial to be quadratic and would appear similar to below [12]:
+
+![](sqr.jpg)
 
 ### Higher Orders
 
@@ -81,12 +84,22 @@ The use of higher-order polynomials requires there to be more quadrature nodes t
 
 For Newton-Cotes, this means that increasing the number of abscissa does not necessarily improve the accuracy and may increase error. Further, it is the case that as the number of nodes increases to infinity, the problem becomes worse-conditioned and less stable [1]. This shortcoming implies the need for other quadrature rules that attain higher accuracy and approach the exact result as the number of quadrature points increases.
 
+### Alternative Quadrature Rules
+
+Other rules, such as Gaussian or Clenshaw-Curtis quadratures, perform much better than Newton-Cotes quadrature rules [1]. Sermutlu showed that it is the case that Gaussian quadrature has a lower relative error than Newton-Cotes quadrature for all input functions and number of interpolation points that he tested [13]. These rules outperform Newton-Cotes as they are not susceptible to Runge's phenomenon. They do this by picking the quadrature points more optimally and similarly interpolating the function. Since these quadrature rules become more efficient as the number of interpolation points grows, unlike for Newton-Cotes, a different method of improving Newton-Cotes is necessary. 
+
 ### Best Performance of Newton-Cotes
 
-Newton-Cotes rarely outperforms more sophisticated quadrature rules on the same number of nodes. However, there are cases where Newton-Cotes is a better choice. As stated, Newton-Cotes is better suited for a small number of points and does not necessarily become more accurate as the number of points grows. The upside is that it is effortless to compute the result of a Newton-Cotes quadrature rule since they are well-defined and the nodes are trivially calculable. The efficiency of Newton-Cotes makes it an ideal choice for *composite quadrature* rules [8]. Composite quadrature rules aim to subdivide the integration interval into many intervals and then apply a rule to each. This approach decreases Newton-Cotes' susceptibility to Runge's phenomenon while increasing accuracy. Though composite quadrature rules may use other quadrature rules, Newton-Cotes is the most efficient. 
+Newton-Cotes rarely outperforms more sophisticated quadrature rules on the same number of nodes. However, there are cases where Newton-Cotes is a better choice. As stated, Newton-Cotes is better suited for a small number of points and does not necessarily become more accurate as the number of points grows. The upside is that it is effortless to compute the result of a Newton-Cotes quadrature rule since they are well-defined and the nodes are trivially calculable. The efficiency of Newton-Cotes makes it an ideal choice for *composite quadrature* rules [8]. Composite quadrature rules aim to subdivide the integration interval into many intervals and then apply a rule to each. Though composite quadrature rules may use other quadrature rules, Newton-Cotes is comparatively efficient.
 
-## Shortcomings of Newton-Cotes and Better Methods
+### Limitations of Numerical Quadrature
+
+Newton-Cotes quadrature and numerical quadrature have limitations that require different approaches to solve. Those include improper integrals (when either bound goes to infinity), discontinuous functions, and multiple integrals of multivariate functions [1]. It is possible to use numerical quadrature methods for these, but they require the processes to be heavily modified.
 
 ## Extending to Composite Quadrature
+
+Composite quadrature rules break the integration interval into smaller subintervals. A quadrature rule applied to each subinterval and summed together is approximate to the integral in the same manner as a quadrature rule applied over the entire interval at once. Composite quadrature is a means to increase the accuracy of Newton-Cotes quadrature [11]. Due to Runge's phenomenon, this is the only way to increase the accuracy of Newton-Cotes quadrature without making the problem more poorly conditioned.
+
+Composite quadrature rules typically divide the interval into $k$ subintervals of length $h$ [1]. This convention implies that a quadrature rule must only be applied $k$ times, adding only a linear amount of work in $k$ to improve accuracy considerably. 
 
 ## References

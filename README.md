@@ -32,15 +32,30 @@ when considering the left-side sum. By definition of quadrature rules, the Reima
 
 ### Deriving Quadrature Rules
 
-Quadrature rules are differentiated by how quadrature weights and nodes are selected. Interpolation is fitting a curve to a data set or simplifying a complex function to one easier to work on [1]. Applying this process to a function $f$ over $n$ predefined nodes defines a polynomial function $p$ of degree $n-1$ that approximates the definite integral of $f$ over the same bounds [5].
+Quadrature rules are differentiated by how quadrature weights and nodes are selected. Interpolation is fitting a curve to a data set or simplifying a complex function to one easier to work on [1]. Interpolation is similar to the method of least squares. However, there is the additional constraint that the curve passes through every point as below [6]: 
+![](CUIP.jpg)
+Interpolating a function $f$ over $n$ predefined nodes defines a polynomial function $p$ of degree $n-1$ that approximates the definite integral of $f$ over the same bounds, that is [5]:
 $$\int_a^b f(x)dx \approx \int_a^b p(x) dx$$
-Multiple methods are applied in practice to determine these interpolatory quadratures. One would choose a widely accepted quadrature rule, such as the Lagrangian. The second would be by *method of undetermined coefficients*. The method of undetermined coefficients aims to determine the interpolating polynomial by solving a system of equations [7]:
+Multiple methods are applied in practice to determine these interpolatory quadratures. One may choose a widely accepted quadrature rule, such as the Lagrangian. Alternatively, one may do so by *method of undetermined coefficients*. The method of undetermined coefficients aims to determine the interpolating polynomial by solving a system of equations [7]:
 $$w_1 + \cdots + w_n = \int_a^b 1dx$$
 $$x_1w_1 + \cdots + x_nw_n = \int_a^b xdx$$
 $$\vdots$$
 $$x_1^{n-1}w_1 + \cdots + x_n^{n-1}w_n = \int_a^b x^{n-1}dx$$
+Solving this system of linear equations returns a set of quadrature weights, leaving only the trivial computation of the quadrature rule summation.
 
 ## Implementations of Newton-Cotes Quadrature
+
+### Defining Features
+
+The Newton-Cotes quadrature rule differentiates itself from most other quadrature rules by evenly spacing each abscissa on the integration interval $[a,b]$ [source tbd]. The quadrature weights can then be found by interpolating $f$ on the $n$ nodes or applying the method of undetermined coefficients. As such, the only consideration for different forms of the Newton-Cotes quadrature rule is the number of nodes and whether the quadrature rule is open or closed. There are several common Newton-Cotes quadrature rules, and are also the most straightforward cases. Those cases are the midpoint, trapezoid, and Simpson's rules.
+
+### Midpoint Rule
+
+### Trapezoid Rule
+
+### Simpson's Rule
+
+### Higher Orders
 
 ## Shortcomings of Newton-Cotes and Alternate Methods
 

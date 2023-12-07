@@ -30,6 +30,17 @@ when considering the left-side sum. By definition of quadrature rules, the Reima
 
 ![](LHRS.jpg)
 
+### Deriving Quadrature Rules
+
+Quadrature rules are differentiated by how quadrature weights and nodes are selected. Interpolation is fitting a curve to a data set or simplifying a complex function to one easier to work on [1]. Applying this process to a function $f$ over $n$ predefined nodes defines a polynomial function $p$ of degree $n-1$ that approximates the definite integral of $f$ over the same bounds [5].
+$$\int_a^b f(x)dx \approx \int_a^b p(x) dx$$
+Multiple methods are applied in practice to determine these interpolatory quadratures. One would choose a widely accepted quadrature rule, such as the Lagrangian. The second would be by *method of undetermined coefficients*. The method of undetermined coefficients aims to determine a polynomial given a set of nodes by solving a matrix of the form:
+$$
+\begin{pmatrix}
+1 & 1 & \cdots & 1\\
+\end{pmatrix}
+$$
+
 ## Implementations of Newton-Cotes Quadrature
 
 ## Shortcomings of Newton-Cotes and Alternate Methods

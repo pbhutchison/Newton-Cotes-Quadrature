@@ -10,6 +10,9 @@ Title: Newton-Cotes Quadrature
 
 - [Overview](#overview)
 - [Background](#background)
+- [Implementation of Newton-Cotes Quadrature](#implementations-of-newton-cotes-quadrature)
+- [Shortcomings of Newton-Cotes and Better Methods](#shortcomings-of-newton-cotes-and-better-methods)
+- [Extending to Composite Quadrature](#extending-to-composite-quadrature)
 - [References](#references)
 
 ## Overview
@@ -82,9 +85,7 @@ For Newton-Cotes, this means that increasing the number of abscissa does not nec
 
 Newton-Cotes rarely outperforms more sophisticated quadrature rules on the same number of nodes. However, there are cases where Newton-Cotes is a better choice. As stated, Newton-Cotes is better suited for a small number of points and does not necessarily become more accurate as the number of points grows. The upside is that it is effortless to compute the result of a Newton-Cotes quadrature rule since they are well-defined and the nodes are trivially calculable. The efficiency of Newton-Cotes makes it an ideal choice for *composite quadrature* rules [8]. Composite quadrature rules aim to subdivide the integration interval into many intervals and then apply a rule to each. This approach decreases Newton-Cotes' susceptibility to Runge's phenomenon while increasing accuracy. Though composite quadrature rules may use other quadrature rules, Newton-Cotes is the most efficient. 
 
-## Shortcomings of Newton-Cotes and Alternate Methods
-
-## Handling Edge Cases
+## Shortcomings of Newton-Cotes and Better Methods
 
 ## Extending to Composite Quadrature
 

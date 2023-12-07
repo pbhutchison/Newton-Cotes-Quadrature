@@ -29,7 +29,7 @@ Consider the Reimann Sum that defines a definite integral. The Reimann Sum only 
 $$R(f) = \sum_{i=1}^n (x_{i+1} - x_i) f(x_i)$$
 when considering the left-side sum. Visually, the Left Reimann Sum of some function $f(x)$ [4]:
 
-![](LHRS.PNG)
+![](LHRS.png)
 
 ## Implementations of Newton-Cotes Quadrature
 

@@ -20,6 +20,16 @@ The Newton-Cotes Quadrature or Newton-Cotes Formulae are a type of a broader cla
 
 Numerical quadrature algorithms function by what are known as quadrature rules. These rules aim to replace the integral with the summation of the product between the integrand evaluated at each quadrature point $x_i$ and a corresponding quadrature weight, $w_i$ [3].
 $$\int_a^b f(x) dx = \sum_{i = 1}^n f(x_i)w_i$$
+As a convention, the quadrature points or abscissas maintain the relationship $a\leq x_1 < \cdots < x_n \leq b$. Further, the quadrature rule is closed only if $x_1 = a$ and $x_2 = b$, otherwise it is open [1].
+
+
+### Motivating Example
+
+Consider the Reimann Sum that defines a definite integral. The Reimann Sum only approximates a definite integral when truncated to evaluate a finite amount of points and establishes the form
+$$R(f) = \sum_{i=1}^n (x_{i+1} - x_i) f(x_i)$$
+when considering the left-side sum. Visually, the Left Reimann Sum of a function such as $f(x) = ln(x)^{-1}$ would be [4]:
+
+![](LHRS.png)
 
 ## Implementations of Newton-Cotes Quadrature
 

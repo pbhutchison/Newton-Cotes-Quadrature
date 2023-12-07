@@ -33,7 +33,9 @@ when considering the left-side sum. By definition of quadrature rules, the Reima
 ### Deriving Quadrature Rules
 
 Quadrature rules are differentiated by how quadrature weights and nodes are selected. Interpolation is fitting a curve to a data set or simplifying a complex function to one easier to work on [1]. Interpolation is similar to the method of least squares. However, there is the additional constraint that the curve passes through every point as below [6]: 
+
 ![](CUIP.jpg)
+
 Interpolating a function $f$ over $n$ predefined nodes defines a polynomial function $p$ of degree $n-1$ that approximates the definite integral of $f$ over the same bounds, that is [5]:
 $$\int_a^b f(x)dx \approx \int_a^b p(x) dx$$
 Multiple methods are applied in practice to determine these interpolatory quadratures. One may choose a widely accepted quadrature rule, such as the Lagrangian. Alternatively, one may do so by *method of undetermined coefficients*. The method of undetermined coefficients aims to determine the interpolating polynomial by solving a system of equations [7]:

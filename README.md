@@ -32,7 +32,7 @@ Consider the Reimann Sum that defines a definite integral. The Reimann Sum only 
 $$\int_a^b f(x)dx \approx R(f) = \sum_{i=1}^n (x_{i+1} - x_i) f(x_i)$$
 when considering the left-side sum. By definition of quadrature rules, the Reimann Sum is a form of numerical quadrature. Visually, the Left Reimann Sum of some function $f(x)$ on six quadrature points is [4]:
 
-![](LHRS.jpg)
+![Figure 1.](LHRS.jpg)
 
 ### Deriving Quadrature Rules
 

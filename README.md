@@ -14,13 +14,14 @@ Title: Newton-Cotes Quadrature
 
 ## Overview
 
-The Newton-Cotes Quadrature or Newton-Cotes Formulae are a type of a broader class of algorithms known as numerical quadrature, which aim to approximate the results of definite integrals. These algorithms are essential for functions $f(x)$ that do not have an antiderivative $F(x)$, which would prevent us from applying the Fundamental Theorem of Calculus $I(f) = \int_a^b f(x)dx = F(b) - F(a)$ to compute definite integrals [1]. For example, the Gaussian Function, $e^{-x^2}$, is known not to have an antiderivative; however, computing its definite integral is essential in probability and statistics [2].
+The Newton-Cotes Quadrature or Newton-Cotes Formulae are a type of a broader class of algorithms known as *numerical quadrature*, which aim to approximate the results of definite integrals. These algorithms are essential for functions $f(x)$ that do not have an antiderivative $F(x)$, which would prevent the application of the Fundamental Theorem of Calculus $I(f) = \int_a^b f(x)dx = F(b) - F(a)$ to compute definite integrals [1]. For example, the Gaussian Function, $e^{-x^2}$, is known not to have an antiderivative; however, computing its definite integral is essential in probability and statistics [2].
 
 ## Background
 
-Numerical quadrature algorithms function by what are known as quadrature rules. These rules aim to replace the integral with the summation of the product between the integrand evaluated at each quadrature point $x_i$ and a corresponding quadrature weight, $w_i$ [3].
+Numerical quadrature algorithms function by what are known as *quadrature rules*. These rules aim to replace the integral with the summation of the product between the integrand evaluated at each *quadrature node* $x_i$ and a corresponding *quadrature weight*, $w_i$ [3].
 $$\int_a^b f(x) dx \approx \sum_{i = 1}^n f(x_i)w_i$$
-By convention, the quadrature points or abscissas maintain the relationship $a\leq x_1 < \cdots < x_n \leq b$. Further, the quadrature rule is closed only if $x_1 = a$ and $x_2 = b$; otherwise, it is open [1].
+By convention, the quadrature nodes or abscissas maintain the relationship $a\leq x_1 < \cdots < x_n \leq b$. Further, the quadrature rule is closed only if $x_1 = a$ and $x_2 = b$; otherwise, it is open [1].
+
 
 ### Motivating Example
 
@@ -32,7 +33,7 @@ when considering the left-side sum. By definition of quadrature rules, the Reima
 
 ### Deriving Quadrature Rules
 
-Quadrature rules are differentiated by how quadrature weights and nodes are selected. Interpolation is fitting a curve to a data set or simplifying a complex function to one easier to work on [1]. Interpolation is similar to the method of least squares. However, there is the additional constraint that the curve passes through every point as below [6]: 
+Quadrature rules are differentiated by how quadrature weights and nodes are selected. Interpolation is fitting a curve to a data set or simplifying a complex function to one easier to work on [1]. Interpolation is similar to the method of least squares. However, there is the additional constraint that the curve passes through every point, as is the case below for data sets with two to five points [6]. 
 
 ![](CUIP.jpg)
 
@@ -49,15 +50,37 @@ Solving this system of linear equations returns a set of quadrature weights, lea
 
 ### Defining Features
 
-The Newton-Cotes quadrature rule differentiates itself from most other quadrature rules by evenly spacing each abscissa on the integration interval $[a,b]$ [source tbd]. The quadrature weights can then be found by interpolating $f$ on the $n$ nodes or applying the method of undetermined coefficients. As such, the only consideration for different forms of the Newton-Cotes quadrature rule is the number of nodes and whether the quadrature rule is open or closed. There are several common Newton-Cotes quadrature rules, and are also the most straightforward cases. Those cases are the midpoint, trapezoid, and Simpson's rules.
+The Newton-Cotes quadrature rule differentiates itself from most other quadrature rules by evenly spacing each abscissa on the integration interval $[a,b]$ [source tbd]. The quadrature weights can then be found by interpolating $f$ on the $n$ nodes or applying the method of undetermined coefficients. As such, the only consideration for different forms of the Newton-Cotes quadrature rule is the number of nodes and whether the quadrature rule is open or closed. There are several common Newton-Cotes quadrature rules, and are also the most straightforward cases. Those cases are the midpoint, trapezoid, and Simpson's rules. 
 
 ### Midpoint Rule
 
+The midpoint rule is a one-point open rule through the integration interval's midpoint, $(a + b)/2$. A closed-form expression for the result of the quadrature is [1]:
+$$M(f) = (b-a)f(\frac{a+b}{2})$$
+This result is derivable using the method of undetermined coefficients in one dimension: solving $w_1 = \int_a^b 1 dx$ for $w_1$. 
+
 ### Trapezoid Rule
+
+The trapezoid rule is a two-point closed rule where the two points are only the beginning and end of the integration interval $a$ and $b$. A closed-form expression for the result of the quadrature is [1]:
+$$T(f) = \frac{b-a}{2}(f(a) + f(x))$$
+Similar to the midpoint rule, this result is derivable from the method of undetermined coefficients. However, in this case, two weights are solved for, but they are equivalent. 
 
 ### Simpson's Rule
 
+Simpson's rule is a three-point closed rule where the points are the beginning, midpoint, and end of the integration interval. A closed-form expression for the result of the quadrature is [1]:
+$$S(f) = \frac{b-a}{6}(f(a) + 4f(\frac{a+b}{2}) + f(b))$$
+Like the other rules, Simpson's rule is derivable by undetermined coefficients. 
+
 ### Higher Orders
+
+The use of higher-order polynomials requires there to be more quadrature nodes to interpolate. However, the defining feature of Newton-Cotes quadrature becomes a weakness as the number of points grows. *Runge's phenomenon* states that when using polynomial interpolation on equally spaced data points, the polynomial may suffer from severe oscillations around the bounds [9]. Runge's phenomenon graphically appears as below where the red curve is the original function, and the blue curve is the interpolated function [10].  
+
+![](RP.jpg)
+
+For Newton-Cotes, this means that increasing the number of abscissa does not necessarily improve the accuracy and may increase error. Further, it is the case that as the number of nodes increases to infinity, the problem becomes worse-conditioned and less stable [1]. This shortcoming implies the need for other quadrature rules that attain higher accuracy and approach the exact result as the number of quadrature points increases.
+
+### Best Performance of Newton-Cotes
+
+Newton-Cotes rarely outperforms more sophisticated quadrature rules on the same number of nodes. However, there are cases where Newton-Cotes is a better choice. As stated, Newton-Cotes is better suited for a small number of points and does not necessarily become more accurate as the number of points grows. The upside is that it is effortless to compute the result of a Newton-Cotes quadrature rule since they are well-defined and the nodes are trivially calculable. The efficiency of Newton-Cotes makes it an ideal choice for *composite quadrature* rules [8]. Composite quadrature rules aim to subdivide the integration interval into many intervals and then apply a rule to each. This approach decreases Newton-Cotes' susceptibility to Runge's phenomenon while increasing accuracy. Though composite quadrature rules may use other quadrature rules, Newton-Cotes is the most efficient. 
 
 ## Shortcomings of Newton-Cotes and Alternate Methods
 

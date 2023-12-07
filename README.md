@@ -36,9 +36,9 @@ Quadrature rules are differentiated by how quadrature weights and nodes are sele
 $$\int_a^b f(x)dx \approx \int_a^b p(x) dx$$
 Multiple methods are applied in practice to determine these interpolatory quadratures. One would choose a widely accepted quadrature rule, such as the Lagrangian. The second would be by *method of undetermined coefficients*. The method of undetermined coefficients aims to determine a polynomial given a set of nodes by solving a matrix of the form:
 $$
-\begin{pmatrix}
-1 & 1 & \cdots & 1\\
-\end{pmatrix}
+\begin{bmatrix}
+1 & 1 & \cdots & 1 \\\
+\end{bmatrix}
 $$
 
 ## Implementations of Newton-Cotes Quadrature

@@ -103,3 +103,18 @@ Composite quadrature rules break the integration interval into smaller subinterv
 Composite quadrature rules typically divide the interval into $k$ subintervals of length $h$ [1]. This convention implies that a quadrature rule must only be applied $k$ times, adding only a linear amount of work in $k$ to improve accuracy considerably. 
 
 ## References
+
+1. M. T. Heath, Scientific Computing: An Introductory Survey. Philadelphia: Society for Industrial and Applied Mathematics, 2018.
+2. X. Zhang, “Gaussian distribution,” SpringerLink, https://link.springer.com/referenceworkentry/10.1007/978-0-387-30164-8_323 (accessed Dec. 7, 2023). 
+3. J. Peterson, “Numerical Quadrature - Department of Scientific Computing,” people.sc.fsu, https://people.sc.fsu.edu/~jpeterson/numerical_quadrature (accessed Dec. 7, 2023). 
+4. W. Commons, “File:Riemann.jpg - Wikimedia Commons,” Wikimedia, https://commons.wikimedia.org/wiki/File:Riemann.jpg (accessed Dec. 7, 2023). 
+5. M. Embree, “Lecture 23: Interpolatory quadrature 4. quadrature,” SCI.Utah, http://sci.utah.edu/~beiwang/teaching/cs6210-fall-2016/lecture23.pdf (accessed Dec. 7, 2023). 
+6. B. Archer and E. Weisstein, “Lagrange interpolating polynomial,” from Wolfram MathWorld, https://mathworld.wolfram.com/LagrangeInterpolatingPolynomial.html (accessed Dec. 7, 2023). 
+7. Reichel, “Lecture 14: Quadrature - Kent,” Kent, https://www.math.kent.edu/~reichel/courses/intr.num.comp.2/lecture18/quadrature.pdf (accessed Dec. 7, 2023). 
+8. A. Yew, “Numerical integration: Newton–Cotes Quadrature Rules - Brown University,” Brown University, https://www.dam.brown.edu/people/alcyew/handouts/NCquadrature.pdf (accessed Dec. 7, 2023). 
+9. T. ülikool, “Runge’s phenomenon - tallinna ülikool,” tlu.ee, https://www.tlu.ee/~tonu/Arvmeet/Runge%27s%20phenomenon.pdf (accessed Dec. 7, 2023). 
+10. F. Chamizo, Runge’s phenomenon, http://matematicas.uam.es/~fernando.chamizo/dark/d_runge.html (accessed Dec. 7, 2023).
+11. A. Kværnø and A. Massing, “Compositequadrature - NTNU,” ntnu, https://www.math.ntnu.no/emner/TMA4125/2021v/lectures/CompositeQuadrature.pdf (accessed Dec. 7, 2023). 
+12. “Simpson’s rule,” Wikipedia, https://en.wikipedia.org/wiki/Simpson%27s_rule (accessed Dec. 7, 2023). 
+13. E. Sermutlu, “Comparison of Newton–Cotes and gaussian methods of quadrature,” Applied Mathematics and Computation, vol. 171, no. 2, pp. 1048–1057, 2005. doi:10.1016/j.amc.2005.01.102 
+

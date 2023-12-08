@@ -60,31 +60,31 @@ The Newton-Cotes quadrature rule differentiates itself from most other quadratur
 
 The midpoint rule is a one-point open rule through the integration interval's midpoint, $(a + b)/2$. A closed-form expression for the result of the quadrature is [1]:
 $$M(f) = (b-a)f(\frac{a+b}{2})$$
-This result is derivable using the method of undetermined coefficients in one dimension: solving $w_1 = \int_a^b 1 dx$ for $w_1$. 
+This result is derivable using the method of undetermined coefficients in one dimension: solving $w_1 = \int_a^b 1 dx$ for $w_1$. The interpolant will be a constant function, a horizontal line, through the midpoint of the interval. 
 
 ### Trapezoid Rule
 
 The trapezoid rule is a two-point closed rule where the two points are only the beginning and end of the integration interval $a$ and $b$. A closed-form expression for the result of the quadrature is [1]:
 $$T(f) = \frac{b-a}{2}(f(a) + f(b))$$
-Similar to the midpoint rule, this result is derivable from the method of undetermined coefficients. However, in this case, two weights are solved for, but they are equivalent. 
+Similar to the midpoint rule, this result is derivable from the method of undetermined coefficients. However, in this case, two weights are solved for, but they are equivalent. The interpolant for the trapezoid rule will be a linear function that connects the two points at $a$ and $b$.
 
 ### Simpson's Rule
 
 Simpson's rule is a three-point closed rule where the points are the beginning, midpoint, and end of the integration interval. A closed-form expression for the result of the quadrature is [1]:
 $$S(f) = \frac{b-a}{6}(f(a) + 4f(\frac{a+b}{2}) + f(b))$$
-Like the other rules, Simpson's rule is derivable by undetermined coefficients. Simpson's rule finds the interpolated polynomial to be quadratic and would appear similar to below [12]:
+Like the other rules, Simpson's rule is derivable by undetermined coefficients. Simpson's rule defines the interpolant to be quadratic and would appear similar to below [12]:
 
 ![](sqr.jpg)
 
 ### Higher Orders
 
-The use of higher-order polynomials requires there to be more quadrature nodes to interpolate. However, the defining feature of Newton-Cotes quadrature becomes a weakness as the number of points grows. *Runge's phenomenon* states that when using polynomial interpolation on equally spaced data points, the polynomial may suffer from severe oscillations around the bounds [9]. Runge's phenomenon graphically appears as below where the red curve is the original function, and the blue curve is the interpolated function [10].  
+The use of higher-order polynomials requires there to be more quadrature nodes to interpolate. However, the defining feature of Newton-Cotes quadrature becomes a weakness as the number of points grows. *Runge's phenomenon* states that when using polynomial interpolation on equally spaced data points, the polynomial may suffer from severe oscillations around the bounds [9]. Runge's phenomenon graphically appears as below where the red curve is the original function, and the blue curve is the interpolant [10].  
 
 ![](RP.jpg)
 
 For Newton-Cotes, this means that increasing the number of abscissa does not necessarily improve the accuracy and may increase error. Further, it is the case that as the number of nodes increases to infinity, the problem becomes worse-conditioned and less stable [1]. This shortcoming implies the need for other quadrature rules that attain higher accuracy and approach the exact result as the number of quadrature points increases.
 
-Newton-Cotes quadrature with an arbitrary number of interpolation points $n$ can still be helpful. Below is pseudocode for the Newton-Cotes quadrature $n$ point closed rule for a function $f$ integrated on $[a,b]$.
+Newton-Cotes quadrature with an arbitrary number of interpolation points $n$ can still be helpful to a certain point. Below is pseudocode for the Newton-Cotes quadrature $n > 1$ point closed rule for a function $f$ integrated on $[a,b]$.
 
 ```
 func(f, a, b, n):
@@ -124,7 +124,7 @@ Composite quadrature rules typically divide the interval into $k$ subintervals o
 
 ## References
 
-1. M. T. Heath, Scientific Computing: An Introductory Survey. Philadelphia: Society for Industrial and Applied Mathematics, 2018.
+[1] M. T. Heath, Scientific Computing: An Introductory Survey. Philadelphia: Society for Industrial and Applied Mathematics, 2018.
 2. X. Zhang, “Gaussian distribution,” SpringerLink, https://link.springer.com/referenceworkentry/10.1007/978-0-387-30164-8_323 (accessed Dec. 7, 2023). 
 3. J. Peterson, “Numerical Quadrature - Department of Scientific Computing,” people.sc.fsu, https://people.sc.fsu.edu/~jpeterson/numerical_quadrature (accessed Dec. 7, 2023). 
 4. W. Commons, “File:Riemann.jpg - Wikimedia Commons,” Wikimedia, https://commons.wikimedia.org/wiki/File:Riemann.jpg (accessed Dec. 7, 2023). 

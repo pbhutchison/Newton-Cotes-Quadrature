@@ -85,13 +85,14 @@ The use of higher-order polynomials requires there to be more quadrature nodes t
 For Newton-Cotes, this means that increasing the number of abscissa does not necessarily improve the accuracy and may increase error. Further, it is the case that as the number of nodes increases to infinity, the problem becomes worse-conditioned and less stable [1]. This shortcoming implies the need for other quadrature rules that attain higher accuracy and approach the exact result as the number of quadrature points increases.
 
 Newton-Cotes quadrature with an arbitrary number of interpolation points $n$ can still be helpful. Below is pseudocode for the Newton-Cotes quadrature $n$ point closed rule.
-
+$$
 ```
 func(f, a, b, n):
 	Initialize n by n matrix A
 	Initialize n by 1 vector y
-	$y_i = (b^i - a^i)/i$
+	y_i = (b^i - a^i)/i
 ```
+$$
 
 ### Alternative Quadrature Rules
 

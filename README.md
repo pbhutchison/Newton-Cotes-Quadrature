@@ -16,7 +16,7 @@ Title: Newton-Cotes Quadrature
 
 ## Overview
 
-The Newton-Cotes Quadrature or Newton-Cotes Formulae are a type of a broader class of algorithms known as *numerical quadrature*, which aim to approximate the results of definite integrals. These algorithms are essential for functions $f(x)$ that do not have an antiderivative $F(x)$, which would prevent the application of the Fundamental Theorem of Calculus $I(f) = \int_a^b f(x)dx = F(b) - F(a)$ to compute definite integrals [1]. For example, the Gaussian Function, $e^{-x^2}$, is known not to have an antiderivative; however, computing its definite integral is essential in probability and statistics [2].
+The Newton-Cotes quadrature or Newton-Cotes formulae are a type of a broader class of algorithms known as *numerical quadrature*, which aim to approximate the results of definite integrals. These algorithms are essential for functions $f(x)$ that do not have an antiderivative $F(x)$, which prevent the application of the Fundamental Theorem of Calculus $I(f) = \int_a^b f(x)dx = F(b) - F(a)$ to compute definite integrals [1]. For example, the Gaussian Function, $e^{-x^2}$, is known not to have an antiderivative; however, computing its definite integral is essential in probability and statistics [2]. Many other such functions exist, and numerical quadrature is a standard method to approximate their definite integrals. 
 
 ## Background
 
@@ -35,18 +35,18 @@ when considering the left-side sum. By definition of quadrature rules, the Reima
 
 ### Deriving Quadrature Rules
 
-Quadrature rules are differentiated by how quadrature weights and nodes are selected. Interpolation is fitting a curve to a data set or simplifying a complex function to one easier to work on [1]. Interpolation is similar to the method of least squares. However, there is the additional constraint that the curve passes through every point, as is the case below for data sets with two to five points [6]. 
+Quadrature rules are differentiated by how quadrature weights and nodes are selected. A standard method to select the weights for a quadrature rule is by interpolation. Interpolation is fitting a curve to a data set or simplifying a complex function to one easier to work on [1]. Interpolation is similar to the method of least squares. However, there is the additional constraint that the curve passes through every point, as is the case below for data sets with two to five points [6]. 
 
 ![](CUIP.jpg)
 
 Interpolating a function $f$ over $n$ predefined nodes defines a polynomial function $p$ of degree $n-1$ that approximates the definite integral of $f$ over the same bounds, that is [5]:
 $$\int_a^b f(x)dx \approx \int_a^b p(x) dx$$
-Multiple methods are applied in practice to determine these interpolatory quadratures. One may choose a widely accepted quadrature rule, such as the Lagrangian. Alternatively, one may do so by *method of undetermined coefficients*. The method of undetermined coefficients aims to determine the interpolating polynomial by solving a system of equations [7]:
+Multiple methods are applied in practice to determine these interpolatory quadratures. One may choose a widely accepted quadrature rule, such as the Lagrangian. Alternatively, one may do so by *method of undetermined coefficients* [1]. The method of undetermined coefficients aims to determine the interpolating polynomial by solving a system of equations [7]:
 $$w_1 + \cdots + w_n = \int_a^b 1dx$$
 $$x_1w_1 + \cdots + x_nw_n = \int_a^b xdx$$
 $$\vdots$$
 $$x_1^{n-1}w_1 + \cdots + x_n^{n-1}w_n = \int_a^b x^{n-1}dx$$
-Solving this system of linear equations returns a set of quadrature weights, leaving only the trivial computation of the quadrature rule summation.
+Solving this system of linear equations returns the set of quadrature weights for predefined nodes. This process leaves only the trivial task of computing the defined summation. 
 
 These methods of computing different quadrature rules are sufficient for understanding how the Newton-Cotes quadrature rules are derived and when they perform the best.
 
@@ -54,7 +54,7 @@ These methods of computing different quadrature rules are sufficient for underst
 
 ### Defining Features
 
-The Newton-Cotes quadrature rule differentiates itself from most other quadrature rules by evenly spacing each abscissa on the integration interval $[a,b]$ [1]. The quadrature weights can then be found by interpolating $f$ on the $n$ nodes or applying the method of undetermined coefficients. As such, the only consideration for different forms of the Newton-Cotes quadrature rule is the number of nodes and whether the quadrature rule is open or closed. There are several common Newton-Cotes quadrature rules, and are also the most straightforward cases. Those cases are the midpoint, trapezoid, and Simpson's rules. Other rules exist and have their uses, but they also have weaknesses that make them appear useless. 
+The Newton-Cotes quadrature rule differentiates itself from most other quadrature rules by evenly spacing each abscissa within the integration interval $[a,b]$ [1]. The quadrature weights are found by interpolating the $n$ abscissa using the method of undetermined coefficients. That means that a Newton-Cotes quadrature rule depends entirely on the number of nodes and whether the rule is open or closed. There are several common Newton-Cotes quadrature rules, which are the most straightforward cases. Those cases are the midpoint, trapezoid, and Simpson's rules. Other rules exist and have their place, but they also have weaknesses that make them less functional in practice.
 
 ### Midpoint Rule
 

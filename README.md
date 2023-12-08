@@ -86,12 +86,12 @@ For Newton-Cotes, this means that increasing the number of abscissa does not nec
 
 Newton-Cotes quadrature with an arbitrary number of interpolation points $n$ can still be helpful. Below is pseudocode for the Newton-Cotes quadrature $n$ point closed rule.
 
-'''
+```
 func(f, a, b, n):
 	Initialize n by n matrix A
 	Initialize n by 1 vector y
 	y_i = (b^i - a^i)/i
-'''
+```
 
 ### Alternative Quadrature Rules
 

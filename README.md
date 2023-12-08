@@ -90,7 +90,7 @@ Newton-Cotes quadrature with an arbitrary number of interpolation points $n$ can
 func(f, a, b, n):
 	Initialize n by n matrix A
 	Initialize n by 1 vector y
-	y_i = (b^i - a^i)/i
+	$y_i = (b^i - a^i)/i$
 ```
 
 ### Alternative Quadrature Rules
